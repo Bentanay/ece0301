@@ -48,7 +48,23 @@ int Component::getindexnodeB() const
     return (nodeB->getNodeIndex());
 }
 
+// getter for terminal voltage
+double Component::getterminalvoltage() const
+{
+    return (nodeA->getVoltage()) - (nodeB->getVoltage());
+}
+
+// report component & node information
 void Component::reportInfo(ofstream &_outfile)
 {
-    _outfile << "Component #" << componentindex << " is connected between node " << getindexnodeA() << " and node " << getindexnodeB() << "." << endl;
+    _outfile << "Component # " << componentindex << " is connected between node " << getindexnodeA() << " and node " << getindexnodeB() << "." << endl;
+    _outfile << "The Voltage across Component # " << componentindex << " = " << abs(getterminalvoltage()) << "," << endl;
+    if (getterminalvoltage() > 0)
+    {
+        _outfile << "with the negative terminal at node " << getindexnodeB() << "." << endl;
+    }
+    else
+    {
+        _outfile << "with the negative terminal at node " << getindexnodeA() << "." << endl;
+    }
 }

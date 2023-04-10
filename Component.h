@@ -30,6 +30,7 @@ public:
     int getcomponentindex() const;
     int getindexnodeA() const;
     int getindexnodeB() const;
+    double getterminalvoltage() const;
 
     // additional member functions
     void reportInfo(ofstream &_outfile);
